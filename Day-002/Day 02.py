@@ -24,3 +24,20 @@ print("hello, " + name)
 
 
 
+# Notes : 
+
+# 1. Check what Git sees
+git status
+
+# 2. Add a specific new file
+git add "folder-name/file-name.py"
+
+# Example:
+git add "Day-002/Day 02.py"
+
+# 3. Commit the change with a message
+git commit -m "Day 2: Learned input functions and variables"
+
+# 4. Push the commit to GitHub
+git push origin main
+
