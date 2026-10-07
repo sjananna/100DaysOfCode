@@ -70,5 +70,23 @@ c=b//a
 print(c)
 #Output: 2
 
+#input function
+#(string input)
+name=input("name: ")
+print(name)
+
+#(int input)
+age = int(input("age: "))
+print(age)
+
+#(float input)
+price = float(input("price: "))
+print(price)
+
+print("My name is", name, "and I am", age, "years old. The price of the potatoes are", price,"cad.")
+
+
+
+
 
 
