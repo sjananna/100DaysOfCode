@@ -1226,6 +1226,426 @@ print(products)
 # Write Your Solution Below:
 
 
+customer_ids = [101, 102, 103, 101, 104, 102, 105]
+
+unique_ids = []
+
+for customer in customer_ids:
+    if customer not in unique_ids:
+        unique_ids.append(customer)
+        print(unique_ids)
+
+
+# ======================================================================
+# PROBLEM 7: REMOVE DUPLICATE CUSTOMER IDS
+# TOPIC: FOR LOOPS, IF STATEMENTS, NOT IN, APPEND(), AND INDENTATION
+# ======================================================================
+
+# OBJECTIVE:
+# Create a new list containing unique customer IDs.
+# Preserve the original order of the IDs.
+# Do not modify the original list.
+
+
+# ======================================================================
+# 1. WHY DO WE CREATE AN EMPTY LIST?
+# ======================================================================
+
+# The original customer_ids list contains duplicate values.
+#
+# We create a separate empty list called unique_ids.
+#
+# This new list will store customer IDs that have not appeared before.
+#
+# Initially, unique_ids contains no elements.
+#
+# IMPORTANT:
+# We are NOT deleting duplicates from the original list.
+# Instead, we are building a new list that excludes duplicates.
+#
+# The original customer_ids list remains unchanged.
+
+
+# ======================================================================
+# 2. WHY DO WE USE A FOR LOOP?
+# ======================================================================
+
+# A for loop allows Python to examine every customer ID individually.
+#
+# The variable "customer" represents the current ID being examined.
+#
+# During the first iteration, customer = 101.
+# During the second iteration, customer = 102.
+# During the third iteration, customer = 103.
+# During the fourth iteration, customer = 101 again.
+#
+# Python continues until every customer ID has been examined.
+#
+# WHY IS A FOR LOOP NECESSARY?
+#
+# Without a loop, we would need to check each customer ID manually.
+#
+# A for loop automatically repeats the same instructions
+# for every element in the original list.
+#
+# IMPORTANT:
+# "customer" is a loop variable.
+# "customer_ids" is the original list.
+#
+# Python automatically assigns each ID to the loop variable.
+# We do not need to define "customer" before starting the loop.
+
+
+# ======================================================================
+# 3. WHY DO WE USE AN IF STATEMENT?
+# ======================================================================
+
+# The for loop examines every customer ID.
+#
+# However, we do not want to add every ID to the new list.
+#
+# We only want to add IDs that are not already present.
+#
+# Therefore, we use an if statement.
+#
+# The if statement checks a condition before performing an action.
+#
+# If the condition is True:
+# Python executes the indented append() statement.
+#
+# If the condition is False:
+# Python skips append() and moves to the next iteration.
+#
+# IMPORTANT:
+# The for loop controls repetition.
+# The if statement controls whether an action happens.
+
+
+# ======================================================================
+# 4. UNDERSTANDING THE "NOT IN" OPERATOR
+# ======================================================================
+
+# "not in" is a membership operator in Python.
+#
+# It checks whether a value is ABSENT from a collection.
+#
+# If the value does not exist in the collection:
+# The condition evaluates to True.
+#
+# If the value already exists in the collection:
+# The condition evaluates to False.
+#
+# DIFFERENCE BETWEEN "IN" AND "NOT IN":
+#
+# "in" checks whether an element exists in a collection.
+#
+# "not in" checks whether an element does NOT exist.
+#
+# WHY DO WE USE "NOT IN" HERE?
+#
+# Because we only want to add customer IDs
+# that have not already been stored in unique_ids.
+#
+# IMPORTANT:
+# "not in" does not delete anything.
+#
+# It only checks whether an element is absent.
+#
+# The if statement uses the result of that check
+# to decide whether append() should execute.
+
+
+# ======================================================================
+# 5. HOW DOES APPEND() WORK IN THIS PROBLEM?
+# ======================================================================
+
+# append() adds one element to the end of a list.
+#
+# In this problem, append() adds the current customer ID
+# to the unique_ids list.
+#
+# However, append() is inside the if statement.
+#
+# Therefore, it executes only when the current ID
+# does not already exist in unique_ids.
+#
+# If the ID already exists, append() is skipped.
+#
+# This prevents duplicate IDs from entering the new list.
+#
+# IMPORTANT:
+# append() itself does NOT check for duplicates.
+#
+# The "not in" condition is responsible for checking.
+#
+# append() is responsible for adding the ID.
+#
+# The combination of both operations prevents duplicates.
+
+
+# ======================================================================
+# 6. HOW PYTHON PROCESSES EVERY CUSTOMER ID
+# ======================================================================
+
+# ORIGINAL CUSTOMER IDS:
+# [101, 102, 103, 101, 104, 102, 105]
+#
+# INITIAL UNIQUE LIST:
+# []
+
+
+# ITERATION 1:
+#
+# Current customer ID = 101
+#
+# Python checks whether 101 is absent from unique_ids.
+#
+# The list is empty, so the condition is True.
+#
+# Python adds 101.
+#
+# Updated unique_ids:
+# [101]
+
+
+# ITERATION 2:
+#
+# Current customer ID = 102
+#
+# Python checks whether 102 already exists.
+#
+# It does not exist, so the condition is True.
+#
+# Python adds 102.
+#
+# Updated unique_ids:
+# [101, 102]
+
+
+# ITERATION 3:
+#
+# Current customer ID = 103
+#
+# Python checks whether 103 already exists.
+#
+# It does not exist, so the condition is True.
+#
+# Python adds 103.
+#
+# Updated unique_ids:
+# [101, 102, 103]
+
+
+# ITERATION 4:
+#
+# Current customer ID = 101
+#
+# Python checks whether 101 is absent from unique_ids.
+#
+# However, 101 already exists in the new list.
+#
+# Therefore, the condition is False.
+#
+# Python SKIPS append().
+#
+# The unique_ids list remains:
+# [101, 102, 103]
+#
+# IMPORTANT:
+# This is how Python prevents duplicate IDs.
+#
+# It does not remove the second 101.
+# It simply refuses to add it to the new list.
+
+
+# ITERATION 5:
+#
+# Current customer ID = 104
+#
+# Python checks whether 104 already exists.
+#
+# It does not exist, so the condition is True.
+#
+# Python adds 104.
+#
+# Updated unique_ids:
+# [101, 102, 103, 104]
+
+
+# ITERATION 6:
+#
+# Current customer ID = 102
+#
+# Python checks whether 102 already exists.
+#
+# Since 102 is already present, the condition is False.
+#
+# Python skips append().
+#
+# The unique_ids list remains:
+# [101, 102, 103, 104]
+
+
+# ITERATION 7:
+#
+# Current customer ID = 105
+#
+# Python checks whether 105 already exists.
+#
+# It does not exist, so the condition is True.
+#
+# Python adds 105.
+#
+# Final unique_ids:
+# [101, 102, 103, 104, 105]
+
+
+# ======================================================================
+# 7. WHY DOES THIS METHOD PRESERVE THE ORIGINAL ORDER?
+# ======================================================================
+
+# The for loop processes the original list from left to right.
+#
+# Every unique customer ID is added when it first appears.
+#
+# Duplicate occurrences are skipped.
+#
+# Therefore, the new list preserves the order
+# of the first appearance of each customer ID.
+#
+# IMPORTANT:
+# We are not sorting the IDs.
+#
+# We are preserving their original sequence.
+
+
+# ======================================================================
+# 8. UNDERSTANDING INDENTATION AND PRINT()
+# ======================================================================
+
+# In my solution, print(unique_ids) was placed inside the if statement.
+#
+# This means Python prints the list every time
+# a new unique customer ID is successfully added.
+#
+# Therefore, the output shows the list growing step by step.
+#
+# EXPECTED OUTPUT WHEN PRINT() IS INSIDE THE IF STATEMENT:
+#
+# [101]
+# [101, 102]
+# [101, 102, 103]
+# [101, 102, 103, 104]
+# [101, 102, 103, 104, 105]
+#
+# Notice that Python prints only five times.
+#
+# WHY?
+#
+# Because there are five unique customer IDs.
+#
+# When Python encounters duplicate IDs,
+# the if condition is False.
+#
+# Therefore, both append() and print() are skipped.
+#
+# IMPORTANT:
+# If print() is placed outside the if statement
+# but remains inside the for loop,
+# Python prints after every iteration, including duplicates.
+#
+# If print() is placed completely outside the for loop,
+# Python prints the final unique list only once.
+#
+# INDENTATION CONTROLS WHICH STATEMENTS BELONG TO EACH BLOCK.
+#
+# This is an extremely important concept in Python.
+
+
+# ======================================================================
+# 9. WHY DOES THE ORIGINAL LIST REMAIN UNCHANGED?
+# ======================================================================
+
+# We never remove elements from customer_ids.
+#
+# We only read its elements using the for loop.
+#
+# All new elements are added to unique_ids.
+#
+# Therefore, customer_ids remains unchanged.
+#
+# ORIGINAL LIST:
+# [101, 102, 103, 101, 104, 102, 105]
+#
+# NEW LIST:
+# [101, 102, 103, 104, 105]
+#
+# IMPORTANT:
+# Reading information from a list does not modify it.
+#
+# append() modifies only the list on which it is called.
+
+
+# ======================================================================
+# 10. FINAL LESSONS LEARNED
+# ======================================================================
+
+# 1. A for loop examines each element in a collection.
+#
+# 2. A loop variable temporarily represents the current element.
+#
+# 3. An if statement determines whether an action should execute.
+#
+# 4. "in" checks whether an element exists in a collection.
+#
+# 5. "not in" checks whether an element is absent.
+#
+# 6. append() adds one element to the end of a list.
+#
+# 7. append() does not automatically prevent duplicates.
+#
+# 8. Combining "not in" with append() prevents duplicate entries.
+#
+# 9. Duplicate IDs are skipped rather than deleted.
+#
+# 10. The original list remains unchanged because
+#     we create and modify a separate list.
+#
+# 11. The original order is preserved because the loop
+#     examines elements from left to right.
+#
+# 12. Indentation determines when statements execute.
+#
+# 13. Printing inside the if statement shows each successful addition.
+#
+# 14. Printing outside the loop displays the final result once.
+
+
+# ======================================================================
+# MOST IMPORTANT TAKEAWAY
+# ======================================================================
+
+# FOR LOOP:
+# Examines every customer ID one at a time.
+#
+# IF STATEMENT:
+# Decides whether the current ID should be added.
+#
+# NOT IN:
+# Checks whether the current ID is absent from the new list.
+#
+# APPEND():
+# Adds the ID only when the condition is True.
+#
+# RESULT:
+# A new list containing unique customer IDs in their original order.
+#
+# The original list remains unchanged.
+#
+# ======================================================================
+# END OF PROBLEM 7 REVISION NOTES
+# ======================================================================
+
 
 
 # ============================================================
@@ -1262,8 +1682,828 @@ print(products)
 #
 # Write Your Solution Below:
 
+scores = [78, 95, 88, 92, 100, 85]
+max_score = max(scores)
+print(max_score)
+
+remove_maxscore = scores.copy()
+remove_maxscore.remove(max_score)
+print(remove_maxscore)
+second_maxscore = max(remove_maxscore)
+print(second_maxscore)
+
+# ======================================================================
+# PROBLEM 8: FINDING THE HIGHEST AND SECOND-HIGHEST SCORES
+# TOPIC: MAX(), COPY(), REMOVE(), METHODS, ARGUMENTS, AND LISTS
+# ======================================================================
+
+# OBJECTIVE:
+# Find the highest and second-highest scores from a list.
+# Make sure the solution works when the scores change.
+# Preserve the original list without modifying its elements.
 
 
+# ======================================================================
+# 1. UNDERSTANDING MAX()
+# ======================================================================
+
+# max() is a built-in Python function.
+#
+# It examines all the values in a collection and returns
+# the largest value.
+#
+# In this problem, max() finds the highest score.
+#
+# The result is stored in the variable max_score.
+#
+# EXAMPLE:
+# Original scores: [78, 95, 88, 92, 100, 85]
+# Highest score: 100
+#
+# IMPORTANT:
+# max() does not modify the original list.
+# It only returns the highest value.
+#
+# max() requires a non-empty collection.
+
+
+# ======================================================================
+# 2. WHY DO WE USE COPY()?
+# ======================================================================
+
+# After finding the highest score, we need to find
+# the second-highest score.
+#
+# One approach is to remove the highest score temporarily
+# and then find the maximum value again.
+#
+# However, removing an element directly from scores
+# would modify the original list.
+#
+# Therefore, we use the copy() method.
+#
+# GENERAL SYNTAX:
+# new_list = original_list.copy()
+#
+# original_list = The list we want to copy.
+# . = The dot operator used to access the method.
+# copy() = Creates a new list containing the same elements.
+# new_list = The variable storing the copied list.
+#
+# In this problem, remove_maxscore stores a copy of scores.
+#
+# Initially, both lists contain the same values.
+#
+# However, they are two separate list objects.
+#
+# Modifying the copied list does not change the original list.
+#
+# IMPORTANT:
+# copy() creates a shallow copy.
+# For this problem, all elements are integers,
+# so the copied list can be modified independently.
+
+
+# ======================================================================
+# 3. UNDERSTANDING THE REMOVE() METHOD
+# ======================================================================
+
+# remove() is a list method used to remove a specified value.
+#
+# GENERAL SYNTAX:
+# list_name.remove(value)
+#
+# BREAKDOWN:
+#
+# list_name:
+# Identifies which list Python should modify.
+#
+# . :
+# The dot operator accesses a method belonging to an object.
+#
+# remove:
+# The method that removes the first occurrence of a value.
+#
+# (value):
+# The argument telling Python which value to remove.
+#
+# IMPORTANT:
+# The value inside the parentheses is called an ARGUMENT.
+#
+# An argument is information supplied to a function or method.
+#
+# In this problem:
+#
+# remove_maxscore = The copied list we want to modify.
+#
+# remove() = The method used to remove a value.
+#
+# max_score = The argument containing the highest score.
+#
+# Since max_score contains 100,
+# Python searches the copied list for the value 100.
+#
+# It then removes the first occurrence of 100.
+#
+# BEFORE REMOVAL:
+# [78, 95, 88, 92, 100, 85]
+#
+# AFTER REMOVAL:
+# [78, 95, 88, 92, 85]
+#
+# IMPORTANT:
+# remove() removes a VALUE, not an INDEX.
+#
+# remove() modifies the existing list directly.
+# It does not create or return a new list.
+#
+# If the specified value does not exist,
+# Python raises a ValueError.
+
+
+# ======================================================================
+# 4. WHY DO WE USE MAX() AGAIN?
+# ======================================================================
+
+# After removing the highest score from the copied list,
+# the remaining values are:
+#
+# [78, 95, 88, 92, 85]
+#
+# The highest remaining value is now 95.
+#
+# Therefore, applying max() again returns 95.
+#
+# We store this result in second_maxscore.
+#
+# IMPORTANT:
+# The first max() finds the highest original score.
+#
+# The second max() finds the highest remaining score
+# after removing one occurrence of the original maximum.
+#
+# This is how we identify the second-highest score.
+
+
+# ======================================================================
+# 5. UNDERSTANDING THE COMPLETE EXECUTION PROCESS
+# ======================================================================
+
+# STEP 1:
+# Python starts with the original list of scores.
+#
+# Original list:
+# [78, 95, 88, 92, 100, 85]
+#
+# STEP 2:
+# max() identifies 100 as the highest score.
+#
+# STEP 3:
+# copy() creates a separate list containing the same scores.
+#
+# STEP 4:
+# remove() removes 100 from the copied list.
+#
+# Updated copied list:
+# [78, 95, 88, 92, 85]
+#
+# STEP 5:
+# max() examines the remaining scores.
+#
+# STEP 6:
+# Python identifies 95 as the highest remaining value.
+#
+# FINAL RESULTS:
+# Highest score = 100
+# Second-highest score = 95
+#
+# The original scores list remains unchanged.
+
+
+# ======================================================================
+# 6. DIFFERENCE BETWEEN REMOVE() AND POP()
+# ======================================================================
+
+# remove() deletes an element based on its VALUE.
+#
+# pop() removes an element based on its INDEX.
+#
+# EXAMPLE:
+# If a list contains [10, 20, 30, 40]:
+#
+# Removing the value 30 using remove()
+# produces [10, 20, 40].
+#
+# Removing the element at index 2 using pop()
+# also produces [10, 20, 40].
+#
+# However, the operations are different.
+#
+# remove() searches for a matching value.
+#
+# pop() uses the position of an element.
+#
+# pop() also returns the removed element.
+#
+# remove() returns None.
+#
+# IMPORTANT:
+# Do not confuse an element's value with its index.
+
+
+# ======================================================================
+# 7. IMPORTANT LIMITATION: DUPLICATE HIGHEST SCORES
+# ======================================================================
+
+# remove() removes only the FIRST occurrence of a value.
+#
+# Suppose the scores are:
+# [78, 100, 95, 100, 88]
+#
+# The highest score is 100.
+#
+# After removing one occurrence of 100:
+# [78, 95, 100, 88]
+#
+# Applying max() again returns 100.
+#
+# This means the program finds the second-highest
+# individual score, including tied scores.
+#
+# However, if the question asks for the second-highest
+# DISTINCT score, the answer should be 95.
+#
+# IMPORTANT:
+# The current solution does not automatically
+# exclude every occurrence of the highest score.
+#
+# To find the second-highest distinct value,
+# we must exclude all occurrences of the maximum.
+#
+# Also, the current approach requires at least two scores
+# because max() cannot operate on an empty list.
+
+
+# ======================================================================
+# 8. WHY DOES THIS SOLUTION WORK WHEN SCORES CHANGE?
+# ======================================================================
+
+# We do not manually specify the highest score.
+#
+# Instead, max() automatically calculates it.
+#
+# We also do not manually specify which value to remove.
+#
+# The remove() method receives max_score as its argument.
+#
+# Therefore, if the highest score changes,
+# the value passed to remove() also changes automatically.
+#
+# After removal, max() finds the highest remaining score.
+#
+# IMPORTANT:
+# This approach works with different score values
+# as long as the list contains at least two elements.
+#
+# Duplicate maximum values require special consideration
+# if the goal is to find the second-highest DISTINCT score.
+
+
+# ======================================================================
+# 9. IMPORTANT LESSONS ABOUT FUNCTIONS AND METHODS
+# ======================================================================
+
+# A function performs a specific operation.
+#
+# A method is a function associated with an object.
+#
+# max() is a built-in Python function.
+#
+# copy() and remove() are list methods.
+#
+# The dot operator is used to access methods on objects.
+#
+# Parentheses are used to call functions and methods.
+#
+# Arguments provide information needed for an operation.
+#
+# EXAMPLE OF THE GENERAL STRUCTURE:
+#
+# object.method(argument)
+#
+# object = The object on which the method is called.
+#
+# method = The operation we want to perform.
+#
+# argument = The information passed to the method.
+#
+# IMPORTANT:
+# Not every method requires an argument.
+#
+# copy() does not require an argument.
+#
+# remove() requires the value we want to remove.
+
+
+# ======================================================================
+# 10. FINAL LESSONS LEARNED
+# ======================================================================
+
+# 1. max() identifies the highest value in a collection.
+#
+# 2. copy() creates a separate list with the same elements.
+#
+# 3. remove() removes the first occurrence of a specified value.
+#
+# 4. The value inside remove() is called an argument.
+#
+# 5. The dot operator accesses methods belonging to an object.
+#
+# 6. remove() works with values rather than indexes.
+#
+# 7. pop() removes elements using indexes.
+#
+# 8. remove() modifies the list on which it is called.
+#
+# 9. Creating a copy protects the original list from modification.
+#
+# 10. Calling max() after removing the highest score
+#     identifies the highest remaining score.
+#
+# 11. Using variables instead of hardcoded values
+#     makes the solution adaptable to different scores.
+#
+# 12. Duplicate highest scores can affect the meaning
+#     of the second-highest result.
+#
+# 13. A function and a method are related concepts,
+#     but they are called differently.
+
+
+# ======================================================================
+# MOST IMPORTANT TAKEAWAY
+# ======================================================================
+
+# First, use max() to find the highest score.
+#
+# Next, create a copy of the original list.
+#
+# Then, use remove() to remove the highest score
+# from the copied list.
+#
+# Finally, use max() again to find the highest
+# remaining score.
+#
+# REMEMBER:
+#
+# copy() = Protect the original list.
+#
+# remove() = Remove a specified value.
+#
+# max() = Find the largest remaining value.
+#
+# This technique allows us to find the two highest
+# individual scores without changing the original data.
+
+
+print(f"Highest Score: {max_score}")
+print(f"Second-Highest Score: {second_maxscore}")
+
+# ======================================================================
+# UNDERSTANDING F-STRINGS IN PYTHON
+# ======================================================================
+
+# f-string stands for "formatted string literal".
+#
+# We use an f-string when we want to combine text and variable values
+# inside a single string.
+#
+# The letter "f" is placed before the opening quotation mark.
+#
+# GENERAL SYNTAX:
+# print(f"Your text {variable_name}")
+#
+# BREAKDOWN:
+#
+# print() = Displays information in the console.
+#
+# f = Tells Python that this string supports expressions inside {}.
+#
+# "Highest Score: " = Regular text that will appear in the output.
+#
+# {max_score} = Python evaluates the variable and inserts its value.
+#
+# EXAMPLE:
+# If max_score = 100,
+# print(f"Highest Score: {max_score}")
+# OUTPUT: Highest Score: 100
+#
+# If second_maxscore = 95,
+# print(f"Second-Highest Score: {second_maxscore}")
+# OUTPUT: Second-Highest Score: 95
+#
+# ======================================================================
+# WHY USE F-STRINGS INSTEAD OF NORMAL STRINGS?
+# ======================================================================
+#
+# Without an f-string:
+# print("Highest Score: " + str(max_score))
+#
+# We must convert the integer into a string using str().
+#
+# With an f-string:
+# print(f"Highest Score: {max_score}")
+#
+# Python automatically formats the integer for display.
+#
+# Another alternative:
+# print("Highest Score:", max_score)
+#
+# This also works because print() accepts multiple arguments.
+#
+# However, f-strings make it easier to control the formatting
+# when combining multiple variables and text.
+#
+# ======================================================================
+# IMPORTANT RULES
+# ======================================================================
+#
+# 1. Always place the letter f before the quotation marks.
+#
+# 2. Put variables or expressions inside curly braces {}.
+#
+# 3. Python replaces expressions inside {} with their evaluated values.
+#
+# 4. F-strings work with integers, floats, strings, and other data types.
+#
+# 5. F-strings can also evaluate expressions.
+#
+#    Example:
+#    print(f"Total Score: {max_score + second_maxscore}")
+#
+#    OUTPUT: Total Score: 195
+#
+# 6. Without the letter f, Python treats {max_score} as literal text.
+#
+#    Example:
+#    print("Highest Score: {max_score}")
+#
+#    OUTPUT: Highest Score: {max_score}
+#
+# MOST IMPORTANT TAKEAWAY:
+#
+# Use f-strings to insert variables directly into readable text
+# without manually converting integers into strings.
+# ======================================================================
+
+
+scores = [78, 95, 88, 92, 100, 85]
+
+max_score = max(scores)
+
+remove_maxscore = scores.copy()
+remove_maxscore.remove(max_score)
+
+second_maxscore = max(remove_maxscore)
+
+print(f"Highest Score: {max_score}")
+print(f"Second-Highest Score: {second_maxscore}")
+
+# ======================================================================
+# PROBLEM 8 - TASK 4: HARDCODING VS DYNAMIC PROGRAMMING
+# TOPIC: VARIABLES, MAX(), COPY(), REMOVE(), AND REUSABLE CODE
+# ======================================================================
+
+# 1. WHAT DOES HARDCODING MEAN?
+#
+# Hardcoding means manually writing fixed values directly
+# into a program instead of calculating or retrieving them.
+#
+# EXAMPLE OF HARDCODING:
+#
+# max_score = 100
+# second_maxscore = 95
+#
+# Here, we manually assigned the values 100 and 95.
+#
+# Python does not calculate these values from the scores list.
+#
+# If the scores change, these variables will still contain
+# 100 and 95 unless we manually update them.
+#
+# IMPORTANT:
+# Hardcoding does NOT necessarily mean writing code
+# without using variables.
+#
+# Even when we use variables, their assigned values
+# can still be hardcoded.
+#
+# For example:
+# max_score = 100
+#
+# max_score is a variable, but 100 is a hardcoded value.
+
+
+# ======================================================================
+# 2. WHAT IS DYNAMIC CALCULATION?
+# ======================================================================
+#
+# Dynamic calculation means allowing Python to calculate
+# results based on the available data.
+#
+# EXAMPLE:
+#
+# max_score = max(scores)
+#
+# Instead of manually assigning 100,
+# we tell Python HOW to find the highest score.
+#
+# If scores contains:
+# [78, 95, 88, 92, 100, 85]
+#
+# max(scores) returns 100.
+#
+# If scores changes to:
+# [65, 82, 99, 74, 91, 88]
+#
+# max(scores) automatically returns 99.
+#
+# We do not need to change the calculation.
+#
+# IMPORTANT:
+# The program recalculates the result when it runs.
+# Changing a list in the source code requires rerunning
+# the program to see the updated output.
+
+
+# ======================================================================
+# 3. WHY SHOULD WE AVOID HARDCODING CALCULATED RESULTS?
+# ======================================================================
+#
+# REASON 1: FLEXIBILITY
+#
+# A dynamic program works with different input values.
+#
+# We can change the scores without rewriting
+# the logic used to find the highest scores.
+#
+#
+# REASON 2: ACCURACY
+#
+# Hardcoded answers can become incorrect when data changes.
+#
+# Dynamic calculations use the current data
+# to determine the correct result.
+#
+#
+# REASON 3: REUSABILITY
+#
+# The same calculation can be reused with different lists.
+#
+# We do not need to write a new solution for every dataset.
+#
+#
+# REASON 4: MAINTAINABILITY
+#
+# Maintainability means how easily we can update,
+# understand, and improve a program.
+#
+# Dynamic calculations reduce the number of values
+# that need to be manually updated.
+#
+#
+# REASON 5: AUTOMATION
+#
+# Automation means allowing a program to perform
+# operations without manually calculating every result.
+#
+# Using max() automates the process of finding
+# the highest score.
+#
+#
+# REASON 6: REDUCING HUMAN ERRORS
+#
+# Manually entering calculated answers can cause mistakes.
+#
+# Built-in functions calculate results consistently
+# when used with valid input data.
+
+
+# ======================================================================
+# 4. DOES HARDCODING ALWAYS MEAN SOMETHING BAD?
+# ======================================================================
+#
+# NO!
+#
+# Hardcoding is not always incorrect.
+#
+# Sometimes fixed values are intentional and appropriate.
+#
+# EXAMPLE:
+#
+# passing_score = 50
+#
+# If the passing score is always 50,
+# assigning that fixed value may be completely reasonable.
+#
+# However, if the passing score changes frequently,
+# we may want to make it configurable.
+#
+# IMPORTANT:
+# The problem is not simply using fixed numbers.
+#
+# The problem is manually fixing values that should
+# be calculated or updated from changing data.
+
+
+# ======================================================================
+# 5. HOW DID WE AVOID HARDCODING IN PROBLEM 8?
+# ======================================================================
+#
+# STEP 1:
+#
+# max_score = max(scores)
+#
+# Python calculates the highest score dynamically.
+#
+#
+# STEP 2:
+#
+# remove_maxscore = scores.copy()
+#
+# Python creates a separate copy of the original list.
+#
+# This protects the original data from modification.
+#
+#
+# STEP 3:
+#
+# remove_maxscore.remove(max_score)
+#
+# Python removes the calculated highest score.
+#
+# Notice that we passed max_score as the argument.
+#
+# We did NOT manually write:
+# remove_maxscore.remove(100)
+#
+# WHY?
+#
+# Because 100 might not always be the highest score.
+#
+# Using max_score allows the value being removed
+# to change automatically when the data changes.
+#
+#
+# STEP 4:
+#
+# second_maxscore = max(remove_maxscore)
+#
+# Python calculates the highest remaining score.
+#
+# We do not manually assign the second-highest value.
+#
+#
+# STEP 5:
+#
+# print(f"Highest Score: {max_score}")
+# print(f"Second-Highest Score: {second_maxscore}")
+#
+# F-strings display the calculated values.
+#
+# If the values change, the displayed results
+# change automatically when the program runs again.
+
+
+# ======================================================================
+# 6. IMPORTANT DIFFERENCE: HARDCODING VS USING VARIABLES
+# ======================================================================
+#
+# A variable is a name that refers to a value or object.
+#
+# Using a variable does not automatically make
+# a program dynamic.
+#
+# EXAMPLE 1:
+#
+# max_score = 100
+#
+# This uses a variable but hardcodes the answer.
+#
+#
+# EXAMPLE 2:
+#
+# max_score = max(scores)
+#
+# This uses a variable AND dynamically calculates
+# the answer from the scores list.
+#
+#
+# MOST IMPORTANT DIFFERENCE:
+#
+# HARDCODING:
+# We tell Python WHAT the answer is.
+#
+# DYNAMIC CALCULATION:
+# We tell Python HOW to find the answer.
+
+
+# ======================================================================
+# 7. IMPORTANT LIMITATIONS OF OUR CURRENT SOLUTION
+# ======================================================================
+#
+# Our solution adapts to changing scores,
+# but it still has some limitations.
+#
+# LIMITATION 1:
+#
+# The list must contain at least two scores.
+#
+# If the list contains only one score,
+# removing it leaves an empty list.
+#
+# Calling max() on an empty list raises a ValueError.
+#
+#
+# LIMITATION 2:
+#
+# If the highest score appears multiple times,
+# remove() removes only its first occurrence.
+#
+# EXAMPLE:
+#
+# scores = [100, 95, 100, 88]
+#
+# After removing one occurrence of 100:
+# [95, 100, 88]
+#
+# The second max() returns 100.
+#
+# This is correct when finding the second-highest
+# individual score, including ties.
+#
+# However, if we need the second-highest DISTINCT score,
+# we must exclude all occurrences of the highest value.
+#
+#
+# LIMITATION 3:
+#
+# The values should be comparable.
+#
+# Our scores list contains integers,
+# so max() can compare them.
+#
+# Mixing incompatible types, such as integers and strings,
+# can cause a TypeError.
+
+
+# ======================================================================
+# 8. FINAL TAKEAWAYS
+# ======================================================================
+#
+# 1. Hardcoding means manually specifying fixed values.
+#
+# 2. Hardcoding can happen even when variables are used.
+#
+# 3. Dynamic calculations determine results from input data.
+#
+# 4. max(scores) is dynamic because it examines the list.
+#
+# 5. max_score = 100 hardcodes the calculated answer.
+#
+# 6. Variables make values easier to reference and reuse,
+#    but variables alone do not eliminate hardcoding.
+#
+# 7. Dynamic calculations improve flexibility and reusability.
+#
+# 8. Dynamic calculations reduce unnecessary manual updates.
+#
+# 9. copy() protects the original list from direct modification.
+#
+# 10. remove(max_score) uses the calculated highest score
+#     rather than a manually specified number.
+#
+# 11. Our solution works with changing scores when
+#     at least two scores are available.
+#
+# 12. Duplicate highest scores require special consideration
+#     when finding the second-highest DISTINCT value.
+#
+# 13. Hardcoding is acceptable when a value is intentionally fixed.
+#
+# 14. The main goal is to avoid hardcoding results
+#     that should be calculated from changing data.
+#
+#
+# MOST IMPORTANT LESSON:
+#
+# HARDCODING = Telling Python what the answer is.
+#
+# DYNAMIC CALCULATION = Telling Python how to find the answer.
+#
+# ======================================================================
+# END OF PROBLEM 8 - TASK 1,2,3 and 4 NOTES
+# ======================================================================
 
 # ============================================================
 # PROBLEM 9: RETURN MULTIPLE VALUES USING A TUPLE
